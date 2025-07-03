@@ -54,9 +54,9 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Connect to MongoDB and start server
+// ✅ Connect to MongoDB using updated env key
 mongoose
-  .connect(process.env.MONGODB_URI)
+  .connect(process.env.MONGO_URI)
   .then(() => {
     console.log('Connected to MongoDB');
     app.listen(PORT, () => {
@@ -71,8 +71,7 @@ mongoose
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (err) => {
   console.error('Unhandled Promise Rejection:', err);
-  // Close server & exit process
   process.exit(1);
 });
 
-module.exports = app; 
+module.exports = app;
